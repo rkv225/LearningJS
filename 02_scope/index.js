@@ -42,5 +42,5 @@ console.log(t); // 100
 // Illegal Shadowing:
 let w = 20;
 {
-    var w = 30; // Uncaught SyntaxError: Identifier 'w' has already been declared
+    // var w = 30; // Uncaught SyntaxError: Identifier 'w' has already been declared
 }
