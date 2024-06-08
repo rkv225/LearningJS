@@ -78,8 +78,12 @@ exe(function() {
 
 ### Event Listeners
 
+Event Listeners can be attached to an element which takes a callback function that is called when a particular event takes place.
+
 ```js
 document.getElementById("clickMe").addEventListener("click", function onButtonClick() {
     console.log("Button Clicked");
 });
 ```
+
+In this the callback functions creates a closure with the outer scope. This crates a burden on memory if we attach a lot of event listeners. In order to reduce this burden we need to remove event listeners when we don't need them. When we remove the event listeners the memory occupied by the closures get freed up.
