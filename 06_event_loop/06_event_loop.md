@@ -33,3 +33,8 @@ When setTimeout function timer expires, whatever callback is registered to execu
 
 Callback queue stores all the callback functions and they get chance for execution one by one.
 
+### fetch and microtask queue
+
+Callback function from fetch comes(queues) inside a different queue than callback queue i.e. **microtask queue**. Microtask queue has a higher priority so the task is picked from this first.
+
+Callback function from promises and mutation observer goes inside microtask queue and others in callback queue.
