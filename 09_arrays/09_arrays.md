@@ -1,4 +1,4 @@
-# Map, Filter and Reduce
+# Arrays
 
 ## Map
 
