@@ -87,3 +87,24 @@ document.getElementById("clickMe").addEventListener("click", function onButtonCl
 ```
 
 In this the callback functions creates a closure with the outer scope. This crates a burden on memory if we attach a lot of event listeners. In order to reduce this burden we need to remove event listeners when we don't need them. When we remove the event listeners the memory occupied by the closures get freed up.
+
+## Function Currying
+
+It is a technique in functional programming, that transforms the function of multiple arguments into several functions of a single argument in sequence. 
+
+```js
+function calculateVolume(length, breadth, height) {
+    return length * breadth * height;
+}
+console.log(calculateVolume(4, 5, 6));
+
+// converted to currying function
+function calculateVolume(length) {
+    return function (breadth) {
+        return function (height) {
+            return length * breadth * height;
+        }
+    }
+}
+console.log(calculateVolume(4)(5)(6));
+```
