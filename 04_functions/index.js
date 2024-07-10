@@ -28,3 +28,18 @@ function clf(s) {
  
 let clfHandle = clf(5);
 clfHandle(6);
+
+// capturing and bubbling
+
+document.querySelector("#outer").addEventListener('click', () => {
+    console.log('outer clicked');   
+}, true);
+
+document.querySelector("#parent").addEventListener('click', () => {
+    console.log('parent clicked');   
+}, false);
+
+document.querySelector("#child").addEventListener('click', (e) => {
+    console.log('child clicked');   
+    e.stopPropagation();
+}, false);

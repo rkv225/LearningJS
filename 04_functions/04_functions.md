@@ -61,7 +61,7 @@ a(arg); // b
 
 ### Arrow Functions
 
-### Callback Functions
+## Callback Functions
 
 Passed as first class citizen and executed inside the function called
 
@@ -87,6 +87,36 @@ document.getElementById("clickMe").addEventListener("click", function onButtonCl
 ```
 
 In this the callback functions creates a closure with the outer scope. This crates a burden on memory if we attach a lot of event listeners. In order to reduce this burden we need to remove event listeners when we don't need them. When we remove the event listeners the memory occupied by the closures get freed up.
+
+### Event bubbling and capturing(trickling)
+
+When an event is fired inside browser it flows from 3 phases within the DOM. These are capuring, target and bubbling phase.
+- **Capturing Phase**: The flow goes from outermost parent of an element clicked to the target element. Event handler is called from parent(global) to child(target) i.e. trickles down if capturing is enabled.
+- **Target Phase**: Target element is the element where the event originally occurred. Event handlers registered on the element are called.
+- **Bubbling Phase**: It is reverse of Capturing phase and default scenario with `addEventListener` method. In this phase, the event bubbles up the target element through its parent element, the ancestor to the global window object.
+
+When event is fired, event listeners are executed if their eventPhase value is equal to current phase.
+
+```js
+document.querySelector("#child").addEventListener('click', () => {
+    console.log("click event");
+}, false); // bubbling is set by default or we can explicitly set to false
+
+document.querySelector("#parent").addEventListener('click', () => {
+    console.log("click event");
+}, true); // propagating
+```
+
+### event.stopPropagation
+
+`event.stopPropagation()` method stops propagation of event and breaks the chain.
+
+```js
+document.querySelector("#parent").addEventListener('click', (e) => {
+    console.log("click event");
+    e.stopPropagation(); // stops event flow
+}, true);
+```
 
 ## Function Currying
 
