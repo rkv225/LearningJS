@@ -118,6 +118,31 @@ document.querySelector("#parent").addEventListener('click', (e) => {
 }, true);
 ```
 
+### Event Delegation
+
+- Event delegation solves problem when we need to handle a lot of events belonging to a group of similar functionality.
+- Instead of attaching event listeners to a lot of elements we add a single event listener to parent.
+- This is possible because of event bubbling.
+- We get the details of child elements using `event agrument`.
+
+**Pros:**
+- In comparison to a lot of event listeners this is very memory efficient.
+- We need to write less code if we use event delegation.
+- If new child adds to the parent 
+
+**Cons:**
+- Some of the events are not bubbled
+- If we are using stop propagation this will not work
+
+```js
+document.querySelector("#category").addEventListener('click', (e) => {
+    if(e.target.tagName == 'LI') {
+        // navigate to the page
+        window.location.href = "/" + e.target.id;
+    }
+});
+```
+
 ## Function Currying
 
 It is a technique in functional programming, that transforms the function of multiple arguments into several functions of a single argument in sequence. 

@@ -43,3 +43,12 @@ document.querySelector("#child").addEventListener('click', (e) => {
     console.log('child clicked');   
     e.stopPropagation();
 }, false);
+
+// event delegation
+document.querySelector("#category").addEventListener('click', (e) => {
+    if(e.target.tagName == 'LI') {
+        console.log(e.target.id, 'clicked');
+        // navigate to the page
+        // window.location.href = "/" + e.target.id;
+    }
+});
