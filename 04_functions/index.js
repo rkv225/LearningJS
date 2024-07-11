@@ -52,3 +52,17 @@ document.querySelector("#category").addEventListener('click', (e) => {
         // window.location.href = "/" + e.target.id;
     }
 });
+
+// recursion with functions
+
+function sum(a) {
+    return function(b) {
+        if(b == null) {
+            return a;
+        }
+        return sum(a + b);
+    };
+}
+
+let val = sum(10)(2)(3)();
+console.log(val);
